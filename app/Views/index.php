@@ -15,7 +15,7 @@
 
         <div class="px-3">
             <a href="/layanan" class="btn-neon">
-                WOY BOOKING
+                BOOKING SEKARANG
             </a>
         </div>
     </div>
