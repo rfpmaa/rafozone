@@ -8,7 +8,7 @@
                 <div class="card-body text-center">
                     <img src="https://ui-avatars.com/api/?name=Admin&background=00d1ff&color=fff" class="rounded-circle mb-3" width="80">
                     <h5 class="text-white font-weight-bold"><?= $nama; ?></h5>
-                    <span class="badge badge-primary">Administrator</span>
+                    <span class="badge badge-primary">Admin</span>
                     <hr class="border-secondary">
                     <div class="list-group list-group-flush bg-transparent">
                         <a href="/admin/dashboard" class="list-group-item list-group-item-action bg-transparent text-white border-0">
