@@ -21,28 +21,27 @@ public function pesan($id_layanan)
     return view('customer/form_booking', $data);
 }
 
-    public function simpan()
-    {
-        $id_layanan = $this->request->getPost('id_layanan');
-        $harga      = $this->request->getPost('harga_per_jam'); 
-        $durasi     = $this->request->getPost('durasi');
-        $jenis_ps   = $this->request->getPost('jenis_ps');
-        $waktu      = $this->request->getPost('waktu_mulai');
-        $makanan    = $this->request->getPost('makanan'); // Ambil harga makanan dari select
+public function simpan()
+{
+    $jenis_ps   = $this->request->getPost('jenis_ps');
+    $harga_ps   = $this->request->getPost('harga_per_jam'); 
+    $durasi     = $this->request->getPost('durasi');
+    $waktu      = $this->request->getPost('waktu_mulai');
+    $harga_mkn  = $this->request->getPost('harga_makanan'); 
 
-        // 2. Hitung total (Taruh rumusnya di sini!)
-        $total = ((int)$harga * (int)$durasi) + (int)$makanan;
+    // Hitung total dengan benar
+    $total = ((int)$harga_ps * (int)$durasi) + (int)$harga_mkn;
 
-        // 3. Kirim data ke Invoice
-        $data = [
-            'title'       => 'Invoice Pembayaran',
-            'invoice_no'  => 'INV-' . date('Ymd') . rand(100, 999),
-            'jenis_ps'    => $jenis_ps,
-            'durasi'      => $durasi,
-            'total'       => $total,
-            'waktu_mulai' => $waktu
-        ];
+    $data = [
+        'title'       => 'Invoice Pembayaran',
+        'invoice_no'  => 'INV-' . date('Ymd') . rand(100, 999),
+        'jenis_ps'    => $jenis_ps,
+        'durasi'      => $durasi,
+        'total'       => $total,
+        'waktu_mulai' => $waktu,
+        'makanan'     => ($harga_mkn > 0) ? "Cemilan Tambahan" : "Tanpa Cemilan"
+    ];
 
-        return view('customer/invoice', $data);
-    }
+    return view('customer/invoice', $data);
+}
 }

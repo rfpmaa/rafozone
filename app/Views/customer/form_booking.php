@@ -52,16 +52,15 @@
 
                             <div class="form-group mb-5">
                                 <label><i class="fas fa-utensils text-primary mr-2"></i> Tambah Cemilan? (Opsional)</label>
-                                <select name="id_menu" class="custom-select">
-                                    <option value="">Tidak Pesan</option>
-                                    <?php if (!empty($menu)) : ?>
-                                        <?php foreach($menu as $m): ?>
-                                            <option value="<?= $m['id_menu']; ?>">
-                                                <?= $m['nama_menu']; ?> (+ Rp <?= number_format($m['harga'], 0, ',', '.'); ?>)
-                                            </option>
-                                        <?php endforeach; ?>
-                                    <?php endif; ?>
-                                </select>
+
+                                <input type="hidden" name="jenis_ps" value="<?= $layanan['jenis_ps']; ?> - <?= $layanan['tipe_room']; ?>">
+                                <input type="hidden" name="harga_per_jam" value="<?= $layanan['harga_per_jam']; ?>">
+                                <select name="harga_makanan" class="custom-select">
+                                <option value="0">Tidak Pesan</option>
+                                    <?php foreach($makanan as $m): ?>
+                                <option value="<?= $m['harga']; ?>"><?= $m['nama_menu']; ?> (+ Rp <?= $m['harga']; ?>)</option>
+                                    <?php endforeach; ?>
+                            </select>
                             </div>
 
                             <button type="submit" class="btn btn-confirm btn-block py-3">
