@@ -7,7 +7,7 @@ class Home extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Selamat Datang di RafOzone'
+            'title' => ''
         ];
         return view('index', $data);
     }

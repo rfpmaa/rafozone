@@ -19,14 +19,14 @@
                             <input type="hidden" name="id_layanan" value="<?= $layanan['id_layanan']; ?>">
 
                             <div class="row">
-                                <div class="col-md-8">
+                                <div class="col-md-6">
                                     <div class="form-group mb-4">
                                         <label><i class="fas fa-gamepad text-primary mr-2"></i> Jenis PS & Room</label>
                                         <input type="text" class="form-control" value="<?= $layanan['jenis_ps']; ?> - <?= $layanan['tipe_room']; ?>" readonly>
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group mb-4">
                                         <label><i class="fas fa-tag text-primary mr-2"></i> Harga per Jam</label>
                                         <input type="text" class="form-control" value="Rp <?= number_format($layanan['harga_per_jam'], 0, ',', '.'); ?>" readonly>
