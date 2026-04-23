@@ -19,7 +19,7 @@
                             <input type="hidden" name="id_layanan" value="<?= $layanan['id_layanan']; ?>">
 
                             <div class="row">
-                                <div class="col-md-6>
+                                <div class="col-md-6">
                                     <div class="form-group mb-4">
                                         <label><i class="fas fa-gamepad text-primary mr-2"></i> Jenis PS & Room</label>
                                         <input type="text" class="form-control" value="<?= $layanan['jenis_ps']; ?> - <?= $layanan['tipe_room']; ?>" readonly>
