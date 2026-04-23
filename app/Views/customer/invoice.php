@@ -65,7 +65,7 @@
 </div>
 
 <style>
-    body { background-color: #f4f7f6; }
+    body { background-color: #0f172a; }
     .card { border-radius: 15px; }
     
     /* CSS agar saat diprint tombolnya hilang */
