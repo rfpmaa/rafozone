@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Apr 2026 pada 03.03
+-- Waktu pembuatan: 23 Apr 2026 pada 09.04
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `rafozone`
+-- Database: `rafozone(1)`
 --
 
 -- --------------------------------------------------------
@@ -56,10 +56,12 @@ CREATE TABLE `layanan` (
 --
 
 INSERT INTO `layanan` (`id_layanan`, `jenis_ps`, `tipe_room`, `harga_per_jam`, `status_room`) VALUES
-(1, 'PlayStation 5', 'VIP (AC + Sofa)', 15000, 'tersedia'),
-(2, 'PlayStation 5', 'Reguler', 12000, 'tersedia'),
-(3, 'PlayStation 4 Pro', 'VIP (AC + Sofa)', 10000, 'tersedia'),
-(4, 'PlayStation 4 Pro', 'Reguler', 8000, 'tersedia');
+(1, 'PlayStation 4 Pro', 'Regular', 10000, 'tersedia'),
+(2, 'PlayStation 4 Pro', 'VIP 1', 20000, 'tersedia'),
+(3, 'PlayStation 5', 'VIP 2', 25000, 'tersedia'),
+(4, 'PlayStation 4 Pro', 'VIP+ 1', 25000, 'tersedia'),
+(9, 'PlayStation 5', 'VIP+ 2', 30000, 'tersedia'),
+(10, 'PlayStation 5 + Nintendo Switch', 'VVIP', 45000, 'tersedia');
 
 -- --------------------------------------------------------
 
@@ -179,7 +181,7 @@ ALTER TABLE `bookings`
 -- AUTO_INCREMENT untuk tabel `layanan`
 --
 ALTER TABLE `layanan`
-  MODIFY `id_layanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_layanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `menu_makanan`
