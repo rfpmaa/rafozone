@@ -44,7 +44,7 @@
                                 <tr>
                                     <td class="text-muted">Menu Tambahan</td>
                                     <td class="text-right font-weight-bold text-success">
-                                        <?= isset($nama_makanan) ? $nama_makanan : 'Cemilan Pesanan'; ?>
+<?= !empty($nama_makanan) ? $nama_makanan : 'Tidak Ada'; ?>
                                     </td>
                                 </tr>
                             </table>

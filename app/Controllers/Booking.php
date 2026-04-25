@@ -23,25 +23,38 @@ public function pesan($id_layanan)
 
 public function simpan()
 {
-    $jenis_ps   = $this->request->getPost('jenis_ps');
-    $harga_ps   = $this->request->getPost('harga_per_jam'); 
-    $durasi     = $this->request->getPost('durasi');
-    $waktu      = $this->request->getPost('waktu_mulai');
-    $harga_mkn  = $this->request->getPost('harga_makanan'); 
+    $jenis_ps = $this->request->getPost('jenis_ps');
+    $harga_ps = $this->request->getPost('harga_per_jam');
+    $durasi   = $this->request->getPost('durasi');
+    $waktu    = $this->request->getPost('waktu_mulai');
 
-    // Hitung total dengan benar
+    // Ambil data makanan
+    $makanan = $this->request->getPost('makanan');
+
+    $nama_makanan = 'Tidak Ada';
+    $harga_mkn = 0;
+
+    if (!empty($makanan)) {
+        $pecah = explode('|', $makanan);
+        $nama_makanan = $pecah[0];
+        $harga_mkn = $pecah[1];
+    }
+
+    // Hitung total
     $total = ((int)$harga_ps * (int)$durasi) + (int)$harga_mkn;
 
     $data = [
-        'title'       => 'Invoice Pembayaran',
-        'invoice_no'  => 'INV-' . date('Ymd') . rand(100, 999),
-        'jenis_ps'    => $jenis_ps,
-        'durasi'      => $durasi,
-        'total'       => $total,
-        'waktu_mulai' => $waktu,
-        'makanan'     => ($harga_mkn > 0) ? "Cemilan Tambahan" : "Tanpa Cemilan"
+        'title'        => 'Invoice Pembayaran',
+        'invoice_no'   => 'INV-' . date('Ymd') . rand(100,999),
+        'jenis_ps'     => $jenis_ps,
+        'durasi'       => $durasi,
+        'waktu_mulai'  => $waktu,
+        'total'        => $total,
+        'nama_makanan' => $nama_makanan
     ];
 
     return view('customer/invoice', $data);
 }
+
+
 }

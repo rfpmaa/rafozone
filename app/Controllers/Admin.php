@@ -78,4 +78,12 @@ public function hapus_makanan($id)
     $model = new \App\Models\MakananModel();
     $model->delete($id);
     return redirect()->to('/admin/makanan')->with('success', 'Menu berhasil dihapus!');
-}}
+}
+
+public function pesanan()
+{
+    return view('admin/pesanan', [
+        'title' => 'Data Pesanan'
+    ]);
+}
+}

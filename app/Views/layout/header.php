@@ -34,8 +34,7 @@
 
                             <div class="dropdown-menu dropdown-menu-right bg-dark border-secondary">
                                 <a class="dropdown-item text-white" href="/logout">
-                                    <i class="fas fa-sign-out-alt mr-2"></i>Logout
-                                </a>
+                                    <i class="fas fa-sign-out-alt mr-2"></i>Logout</a>
                             </div>
                         </div>
                     </li>
