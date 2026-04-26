@@ -16,6 +16,8 @@ $routes->get('/logout', 'Auth::logout');
 $routes->get('/register', 'Auth::register');
 $routes->post('/auth/simpan_register', 'Auth::simpan_register');
 $routes->get('admin/dashboard', 'Admin::dashboard');
+$routes->get('/admin/pesanan', 'Admin::pesanan');
+$routes->post('/admin/konfirmasi/(:num)', 'Admin::konfirmasi/$1');
 $routes->get('admin/layanan', 'Admin::layanan');
 $routes->post('admin/tambah_layanan', 'Admin::tambah_layanan');
 $routes->get('admin/hapus_layanan/(:num)', 'Admin::hapus_layanan/$1');

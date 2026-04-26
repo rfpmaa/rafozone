@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\LayananModel;
 use App\Models\MakananModel;
+use App\Models\PesananModel;
 // Misalkan kamu sudah punya BookingModel untuk simpan data pesanan
 // use App\Models\BookingModel; 
 
@@ -80,10 +81,44 @@ public function hapus_makanan($id)
     return redirect()->to('/admin/makanan')->with('success', 'Menu berhasil dihapus!');
 }
 
-public function pesanan()
-{
-    return view('admin/pesanan', [
-        'title' => 'Data Pesanan'
-    ]);
-}
+public function __construct()
+    {
+        // Panggil model di constructor agar bisa dipakai di semua fungsi
+        $this->pesananModel = new PesananModel();
+    }
+
+    public function pesanan()
+    {
+        $keyword = $this->request->getGet('keyword');
+        $status  = $this->request->getGet('status');
+
+        $builder = $this->pesananModel;
+
+        if ($keyword) {
+            $builder->like('customer', $keyword);
+        }
+
+        if ($status) {
+            $builder->where('status', $status);
+        }
+
+        $data = [
+            'title'   => 'Data Pesanan',
+            'nama'    => 'Admin Rafozone',
+            'pesanan' => $builder->findAll() // Mengambil data hasil filter
+        ];
+
+        return view('admin/pesanan', $data);
+    }
+
+    public function konfirmasi($id)
+    {
+        // Update status menjadi Selesai
+        $this->pesananModel->update($id, [
+            'status' => 'Selesai'
+        ]);
+
+        return redirect()->to('/admin/pesanan')->with('success', 'Pesanan berhasil dikonfirmasi!');
+    }
+
 }

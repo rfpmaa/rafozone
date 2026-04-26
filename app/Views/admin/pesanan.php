@@ -4,209 +4,145 @@
 
 <div class="container" style="padding-top:120px; padding-bottom:50px;">
 
-    <!-- HEADER -->
-    <div class="mb-4">
-        <div class="p-4 shadow"
-             style="border-radius:15px; background:linear-gradient(90deg,#007bff,#00d1ff);">
+    <div class="row">
 
-            <h4 class="font-weight-bold text-white mb-1">
-                <i class="fas fa-receipt mr-2"></i>
-                Data Pesanan Booking
-            </h4>
+        <div class="col-lg-3 col-md-4 mb-4">
+            <div class="card bg-dark border-secondary shadow" style="border-radius:15px;">
+                <div class="card-body text-center">
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=00d1ff&color=fff"
+                         class="rounded-circle mb-3" width="80">
 
-            <p class="text-white mb-0 small">
-                Kelola seluruh transaksi booking customer RafOzone.
-            </p>
-        </div>
-    </div>
+                    <h5 class="text-white font-weight-bold mb-1">
+                        <?= $nama; // Variabel dari Controller ?>
+                    </h5>
 
-    <!-- FILTER -->
-    <div class="card bg-dark border-secondary shadow mb-4"
-         style="border-radius:15px;">
+                    <span class="badge badge-primary px-3 py-2">Admin</span>
 
-        <div class="card-body">
+                    <hr class="border-secondary">
 
-            <div class="row">
-
-                <div class="col-md-4 mb-3">
-                    <input type="text"
-                           class="form-control bg-secondary border-0 text-white"
-                           placeholder="Cari nama customer...">
+                    <div class="list-group list-group-flush text-left">
+                        <a href="/admin/dashboard" class="list-group-item list-group-item-action bg-transparent text-white border-0">
+                            <i class="fas fa-home mr-2"></i> Dashboard
+                        </a>
+                        <a href="/admin/layanan" class="list-group-item list-group-item-action bg-transparent text-muted border-0">
+                            <i class="fas fa-gamepad mr-2"></i> Kelola PS
+                        </a>
+                        <a href="/admin/makanan" class="list-group-item list-group-item-action bg-transparent text-muted border-0">
+                            <i class="fas fa-utensils mr-2"></i> Kelola Menu
+                        </a>
+                        <a href="/logout" class="list-group-item list-group-item-action bg-transparent text-danger border-0">
+                            <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                        </a>
+                    </div>
                 </div>
+            </div>
+        </div>
 
-                <div class="col-md-3 mb-3">
-                    <select class="form-control bg-secondary border-0 text-white">
-                        <option>Semua Status</option>
-                        <option>Pending</option>
-                        <option>Selesai</option>
-                        <option>Cancel</option>
+        <div class="col-lg-9 col-md-8">
+
+            <h3 class="text-white font-weight-bold mb-4">Ringkasan Bisnis</h3>
+
+            <form action="/admin/pesanan" method="get" class="row mb-4">
+                <div class="col-md-5 mb-2">
+                    <input type="text" name="keyword" class="form-control bg-dark text-white border-secondary" 
+                           placeholder="Cari nama customer..." value="<?= request()->getGet('keyword'); ?>">
+                </div>
+                <div class="col-md-4 mb-2">
+                    <select name="status" class="form-control bg-dark text-white border-secondary">
+                        <option value="">Semua Status</option>
+                        <option value="Pending" <?= request()->getGet('status') == 'Pending' ? 'selected' : ''; ?>>Pending</option>
+                        <option value="Selesai" <?= request()->getGet('status') == 'Selesai' ? 'selected' : ''; ?>>Selesai</option>
+                        <option value="Cancel" <?= request()->getGet('status') == 'Cancel' ? 'selected' : ''; ?>>Cancel</option>
                     </select>
                 </div>
-
-                <div class="col-md-3 mb-3">
-                    <input type="date"
-                           class="form-control bg-secondary border-0 text-white">
-                </div>
-
-                <div class="col-md-2 mb-3">
-                    <button class="btn btn-primary btn-block">
-                        <i class="fas fa-search"></i>
+                <div class="col-md-3 mb-2">
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-search mr-2"></i>Cari
                     </button>
                 </div>
+            </form>
 
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card bg-primary text-white shadow border-0 h-100" style="border-radius:15px; min-height:140px;">
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <h6 class="text-uppercase small mb-2">Total Booking Hari Ini</h6>
+                            <h2 class="font-weight-bold mb-0">12</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card bg-success text-white shadow border-0 h-100" style="border-radius:15px; min-height:140px;">
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <h6 class="text-uppercase small mb-2">Pendapatan</h6>
+                            <h2 class="font-weight-bold mb-0">Rp 450k</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-dark border-secondary shadow" style="border-radius:15px; overflow:hidden;">
+                <div class="card-header border-secondary bg-transparent d-flex justify-content-between align-items-center">
+                    <h5 class="text-white mb-0">Pesanan Masuk</h5>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover mb-0">
+                        <thead>
+                            <tr class="text-muted small text-uppercase">
+                                <th>Invoice</th>
+                                <th>Customer</th>
+                                <th>Layanan</th>
+                                <th>Durasi</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th class="text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if (!empty($pesanan)) : ?>
+                                <?php foreach ($pesanan as $p) : ?>
+                                <tr>
+                                    <td><?= $p['invoice']; ?></td>
+                                    <td><?= $p['customer']; ?></td>
+                                    <td><?= $p['layanan']; ?></td>
+                                    <td><?= $p['durasi']; ?> Jam</td>
+                                    <td>Rp <?= number_format($p['total'], 0, ',', '.'); ?></td>
+                                    <td>
+                                        <?php 
+                                            $badge = 'secondary';
+                                            if ($p['status'] == 'Pending') $badge = 'warning';
+                                            if ($p['status'] == 'Selesai') $badge = 'success';
+                                            if ($p['status'] == 'Cancel') $badge = 'danger';
+                                        ?>
+                                        <span class="badge badge-<?= $badge; ?>"><?= $p['status']; ?></span>
+                                    </td>
+                                    <td class="text-center">
+                                        <?php if ($p['status'] == 'Pending') : ?>
+                                            <form action="/admin/konfirmasi/<?= $p['id']; ?>" method="post" style="display:inline;">
+                                                <?= csrf_field(); ?>
+                                                <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Konfirmasi pesanan ini?')">
+                                                    Konfirmasi
+                                                </button>
+                                            </form>
+                                        <?php else : ?>
+                                            <button class="btn btn-outline-secondary btn-sm" disabled>No Action</button>
+                                        <?php endif; ?>
+                                    </td>
+                                </tr>
+                                <?php endforeach; ?>
+                            <?php else : ?>
+                                <tr>
+                                    <td colspan="7" class="text-center">Data tidak ditemukan.</td>
+                                </tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
         </div>
     </div>
-
-    <!-- STATISTIK -->
-    <div class="row mb-4">
-
-        <div class="col-md-3 mb-3">
-            <div class="card bg-primary text-white border-0 shadow h-100"
-                 style="border-radius:15px;">
-                <div class="card-body">
-                    <h6 class="small text-uppercase">Total Hari Ini</h6>
-                    <h3 class="font-weight-bold mb-0">12</h3>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 mb-3">
-            <div class="card bg-warning text-dark border-0 shadow h-100"
-                 style="border-radius:15px;">
-                <div class="card-body">
-                    <h6 class="small text-uppercase">Pending</h6>
-                    <h3 class="font-weight-bold mb-0">4</h3>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 mb-3">
-            <div class="card bg-success text-white border-0 shadow h-100"
-                 style="border-radius:15px;">
-                <div class="card-body">
-                    <h6 class="small text-uppercase">Selesai</h6>
-                    <h3 class="font-weight-bold mb-0">8</h3>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 mb-3">
-            <div class="card bg-info text-white border-0 shadow h-100"
-                 style="border-radius:15px;">
-                <div class="card-body">
-                    <h6 class="small text-uppercase">Pendapatan</h6>
-                    <h3 class="font-weight-bold mb-0">Rp 450k</h3>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- TABLE -->
-    <div class="card bg-dark border-secondary shadow"
-         style="border-radius:15px; overflow:hidden;">
-
-        <div class="card-header bg-transparent border-secondary d-flex justify-content-between align-items-center">
-
-            <h5 class="text-white mb-0">
-                <i class="fas fa-list mr-2"></i>
-                Semua Pesanan
-            </h5>
-
-            <a href="/admin/dashboard"
-               class="btn btn-outline-light btn-sm">
-                <i class="fas fa-arrow-left mr-1"></i>
-                Dashboard
-            </a>
-
-        </div>
-
-        <div class="table-responsive">
-
-            <table class="table table-dark table-hover mb-0">
-
-                <thead>
-                    <tr class="text-muted small text-uppercase">
-                        <th>Invoice</th>
-                        <th>Customer</th>
-                        <th>Layanan</th>
-                        <th>Tanggal</th>
-                        <th>Durasi</th>
-                        <th>Total</th>
-                        <th>Status</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-
-                    <tr>
-                        <td>INV001</td>
-                        <td>Oryza</td>
-                        <td>PS 5 VIP</td>
-                        <td>25/04/26</td>
-                        <td>2 Jam</td>
-                        <td>Rp 40.000</td>
-                        <td>
-                            <span class="badge badge-warning">
-                                Pending
-                            </span>
-                        </td>
-                        <td>
-                            <button class="btn btn-sm btn-success">
-                                Konfirmasi
-                            </button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>INV002</td>
-                        <td>Rafania</td>
-                        <td>PS 4 Reguler</td>
-                        <td>25/04/26</td>
-                        <td>3 Jam</td>
-                        <td>Rp 24.000</td>
-                        <td>
-                            <span class="badge badge-success">
-                                Selesai
-                            </span>
-                        </td>
-                        <td>
-                            <button class="btn btn-sm btn-info">
-                                Detail
-                            </button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>INV003</td>
-                        <td>Farhan</td>
-                        <td>PS 5 VIP</td>
-                        <td>25/04/26</td>
-                        <td>1 Jam</td>
-                        <td>Rp 20.000</td>
-                        <td>
-                            <span class="badge badge-danger">
-                                Cancel
-                            </span>
-                        </td>
-                        <td>
-                            <button class="btn btn-sm btn-secondary">
-                                Hapus
-                            </button>
-                        </td>
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </div>
-
 </div>
 
 <?= $this->endSection(); ?>
