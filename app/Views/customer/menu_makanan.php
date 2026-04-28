@@ -7,7 +7,6 @@
         padding-top: 140px;
         padding-bottom: 80px;
         min-height: 100vh;
-        background-color: #0b1120;
     }
 
     .text-gradient {
@@ -71,7 +70,6 @@
                     Menu <span class="text-gradient">Cemilan</span>
                 </h2>
                 <p class="text-muted">Daftar kudapan dan minuman favorit untuk menemani sesi mabar kamu.</p>
-                <div style="width: 50px; height: 3px; background: #00d1ff; margin: 15px auto; border-radius: 10px;"></div>
             </div>
         </div>
 

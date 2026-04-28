@@ -142,21 +142,21 @@
 
                             <tr>
                                 <td>Oryza</td>
-                                <td>PS 5 - VIP</td>
+                                <td>PlayStation 4 Pro Regular</td>
                                 <td>2 Jam</td>
-                                <td>Rp 40.000</td>
+                                <td>Rp 20.000</td>
                                 <td>
-                                    <span class="badge badge-warning">
-                                        Pending
+                                    <span class="badge badge-success">
+                                        Selesai
                                     </span>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td>Rafania</td>
-                                <td>PS 4 - Reguler</td>
+                                <td>PlayStation 5 VIP+ 2</td>
                                 <td>3 Jam</td>
-                                <td>Rp 24.000</td>
+                                <td>Rp 90.000</td>
                                 <td>
                                     <span class="badge badge-success">
                                         Selesai

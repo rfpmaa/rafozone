@@ -64,9 +64,6 @@
                         </div>
 
                         <div class="no-print">
-                            <button onclick="window.print()" class="btn btn-dark btn-block py-3 mb-2 font-weight-bold shadow-sm">
-                                <i class="fas fa-print mr-2"></i> CETAK STRUK
-                            </button>
                             <a href="/" class="btn btn-outline-primary btn-block py-2">
                                 <i class="fas fa-home mr-1"></i> Beranda
                             </a>
