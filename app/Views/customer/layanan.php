@@ -5,8 +5,8 @@
 <div class="layanan-wrapper"> <div class="container">
         <div class="row mb-5">
             <div class="col text-center">
-                <h2 class="font-weight-bold text-white">Daftar Layanan <span class="text-gradient">RafOzone</span></h2>
-                <p class="text-muted">Pilih paket PlayStation favoritmu dan mulai bermain!</p>
+                <h2 class="font-weight-bold text-white"  style="font-size: 45px">Daftar Layanan <span class="text-gradient">RafOzone</span></h2>
+                <p class="text-muted" style="font-size: 18px">Pilih paket PlayStation favoritmu dan mulai bermain!</p>
             </div>
         </div>
 

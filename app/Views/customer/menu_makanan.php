@@ -4,7 +4,7 @@
 
 <style>
     .menu-wrapper {
-        padding-top: 140px;
+        padding-top: 120px;
         padding-bottom: 80px;
         min-height: 100vh;
     }
@@ -66,10 +66,10 @@
         
         <div class="row mb-5">
             <div class="col text-center">
-                <h2 class="display-4 font-weight-bold text-white mb-2">
+                <h2 class="font-weight-bold text-white mb-2" style="font-size: 45px">
                     Menu <span class="text-gradient">Cemilan</span>
                 </h2>
-                <p class="text-muted">Daftar kudapan dan minuman favorit untuk menemani sesi mabar kamu.</p>
+                <p class="text-muted" style="font-size: 18px">Daftar kudapan dan minuman favorit untuk menemani sesi mabar kamu.</p>
             </div>
         </div>
 
@@ -80,19 +80,10 @@
                     <div class="card card-menu h-100 shadow">
                         <div class="img-container">
                             <img src="<?= $m['gambar_url']; ?>" class="menu-img" alt="<?= $m['nama_menu']; ?>">
-                            <div class="badge-stok">Stok: <?= $m['stok']; ?></div>
                         </div>
                         
                         <div class="card-body p-4 d-flex flex-column">
-                            <div class="mb-2">
-                                <?php if ($m['stok'] > 0) : ?>
-                                    <span class="badge badge-pill badge-success mb-2" style="font-size: 10px;">Tersedia</span>
-                                <?php else : ?>
-                                    <span class="badge badge-pill badge-danger mb-2" style="font-size: 10px;">Habis</span>
-                                <?php endif; ?>
                                 <h5 class="font-weight-bold text-white mb-1"><?= $m['nama_menu']; ?></h5>
-                            </div>
-                            
                             <div class="mt-auto pt-3 border-top border-secondary">
                                 <h4 class="text-gradient font-weight-bold mb-0">Rp <?= number_format($m['harga'], 0, ',', '.'); ?></h4>
                             </div>
