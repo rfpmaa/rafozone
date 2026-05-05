@@ -80,9 +80,7 @@
                                 Total Booking
                             </h6>
 
-                            <h2 class="font-weight-bold mb-0">
-                                12
-                            </h2>
+                            <h2 class="font-weight-bold mb-0"><?= $total_booking; ?></h2>
                         </div>
 
                     </div>
@@ -97,9 +95,7 @@
                                 Pendapatan
                             </h6>
 
-                            <h2 class="font-weight-bold mb-0">
-                                Rp 450k
-                            </h2>
+                            <h2 class="font-weight-bold mb-0">Rp <?= number_format($total_pendapatan, 0, ',', '.'); ?></h2>
                         </div>
 
                     </div>

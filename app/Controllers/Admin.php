@@ -5,107 +5,67 @@ namespace App\Controllers;
 use App\Models\LayananModel;
 use App\Models\MakananModel;
 use App\Models\PesananModel;
-// Misalkan kamu sudah punya BookingModel untuk simpan data pesanan
-// use App\Models\BookingModel; 
 
 class Admin extends BaseController
 {
-    public function dashboard()
-    {
-        // Proteksi: Kalau bukan admin, tendang balik ke login
-        if (session()->get('role') != 'admin') {
-            return redirect()->to('/login');
-        }
+    protected $pesananModel;
 
-        $data = [
-            'title' => 'Dashboard Admin | RafOzone',
-            'nama'  => session()->get('nama')
-        ];
-
-        return view('admin/dashboard', $data);
-    }
-    // Tambahkan di dalam class Admin
-public function layanan()
-{
-    $model = new \App\Models\LayananModel();
-    $data = [
-        'title'   => 'Kelola Layanan | RafOzone',
-        'layanan' => $model->findAll()
-    ];
-    return view('admin/layanan', $data);
-}
-
-public function tambah_layanan()
-{
-    $model = new \App\Models\LayananModel();
-    $model->save([
-        'jenis_ps'      => $this->request->getVar('jenis_ps'),
-        'tipe_room'     => $this->request->getVar('tipe_room'),
-        'harga_per_jam' => $this->request->getVar('harga_per_jam'),
-        'status'        => 'tersedia'
-    ]);
-    return redirect()->to('/admin/layanan')->with('success', 'Layanan berhasil ditambah!');
-}
-
-public function hapus_layanan($id)
-{
-    $model = new \App\Models\LayananModel();
-    $model->delete($id);
-    return redirect()->to('/admin/layanan')->with('success', 'Layanan berhasil dihapus!');
-}
-
-public function makanan()
-{
-    $model = new \App\Models\MakananModel();
-    $data = [
-        'title'   => 'Kelola Menu Makanan | RafOzone',
-        'makanan' => $model->findAll()
-    ];
-    return view('admin/makanan', $data);
-}
-
-public function tambah_makanan()
-{
-    $model = new \App\Models\MakananModel();
-    $model->save([
-        'nama_menu' => $this->request->getVar('nama_menu'),
-        'harga'     => $this->request->getVar('harga'),
-    ]);
-    return redirect()->to('/admin/makanan')->with('success', 'Menu berhasil ditambah!');
-}
-
-public function hapus_makanan($id)
-{
-    $model = new \App\Models\MakananModel();
-    $model->delete($id);
-    return redirect()->to('/admin/makanan')->with('success', 'Menu berhasil dihapus!');
-}
-
-public function __construct()
+    public function __construct()
     {
         // Panggil model di constructor agar bisa dipakai di semua fungsi
         $this->pesananModel = new PesananModel();
     }
+
+public function dashboard()
+{
+    // Proteksi admin
+    if (session()->get('role') != 'admin') {
+        return redirect()->to('/login');
+    }
+
+    // HITUNG DATA REAL-TIME UNTUK DASHBOARD
+    $totalBooking = $this->pesananModel->countAllResults(false);
+    $pendapatan   = $this->pesananModel->selectSum('total')
+                                       ->where('status', 'Selesai')
+                                       ->get()->getRow()->total;
+
+    $data = [
+        'title'            => 'Dashboard Admin | RafOzone',
+        'nama'             => session()->get('nama'),
+        'total_booking'    => $totalBooking,      // Tambahkan ini
+        'total_pendapatan' => $pendapatan ?? 0,    // Tambahkan ini
+        'pesanan'          => $this->pesananModel->orderBy('id', 'DESC')->findAll(2) // Ambil 2 data terakhir saja untuk pajangan
+    ];
+
+    return view('admin/dashboard', $data);
+}
 
     public function pesanan()
     {
         $keyword = $this->request->getGet('keyword');
         $status  = $this->request->getGet('status');
 
-        $builder = $this->pesananModel;
+        // --- HITUNG OTOMATIS UNTUK BOX ---
+        $totalBooking = $this->pesananModel->countAllResults(false);
+        $pendapatan   = $this->pesananModel->selectSum('total')
+                                           ->where('status', 'Selesai')
+                                           ->get()->getRow()->total;
 
+        // --- LOGIKA TABEL ---
+        $builder = $this->pesananModel;
         if ($keyword) {
             $builder->like('customer', $keyword);
         }
-
         if ($status) {
             $builder->where('status', $status);
         }
 
         $data = [
-            'title'   => 'Data Pesanan',
-            'nama'    => 'Admin Rafozone',
-            'pesanan' => $builder->findAll() // Mengambil data hasil filter
+            'title'            => 'Data Pesanan',
+            'nama'             => 'Admin Rafozone',
+            'pesanan'          => $builder->findAll(),
+            'total_booking'    => $totalBooking,
+            'total_pendapatan' => $pendapatan ?? 0
         ];
 
         return view('admin/pesanan', $data);
@@ -113,12 +73,29 @@ public function __construct()
 
     public function konfirmasi($id)
     {
-        // Update status menjadi Selesai
-        $this->pesananModel->update($id, [
-            'status' => 'Selesai'
-        ]);
-
+        $this->pesananModel->update($id, ['status' => 'Selesai']);
         return redirect()->to('/admin/pesanan')->with('success', 'Pesanan berhasil dikonfirmasi!');
     }
 
+    public function layanan()
+    {
+        $model = new LayananModel();
+        $data = [
+            'title'   => 'Kelola Layanan | RafOzone',
+            'layanan' => $model->findAll()
+        ];
+        return view('admin/layanan', $data);
+    }
+
+    public function makanan()
+    {
+        $model = new MakananModel();
+        $data = [
+            'title'   => 'Kelola Menu Makanan | RafOzone',
+            'makanan' => $model->findAll()
+        ];
+        return view('admin/makanan', $data);
+    }
+    
+    // Tambahkan fungsi tambah/hapus layanan & makanan di bawah sini jika diperlukan
 }
