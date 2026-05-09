@@ -50,7 +50,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link <?= (uri_string() == 'menu_makanan') ? 'active' : ''; ?>" href="/menu_makanan">Daftar Menu</a>
+                        <a class="nav-link <?= (uri_string() == 'menu') ? 'active' : ''; ?>" href="/menu">Daftar Menu</a>
                     </li>
 
                     <?php if (session()->get('logged_in')) : ?>
