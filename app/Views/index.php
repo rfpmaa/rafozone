@@ -89,9 +89,9 @@
         <div class="col-md-4 mb-4">
             <div class="card h-100 p-4" style="border: 1px solid var(--primary);">
                 <div class="card-body text-center">
-                    <i class="fas fa-vr-cardboard text-primary mb-3 fa-2x"></i>
-                    <h5 class="font-weight-bold text-white">Next-Gen PS5</h5>
-                    <p class="text-muted small">Nikmati grafis memukau dengan console PlayStation 5 terbaru.</p>
+                    <i class="fas fa-utensils  text-primary mb-3 fa-2x"></i>
+                    <h5 class="font-weight-bold text-white">Snacks & Drinks</h5>
+                    <p class="text-muted small">Nikmati sesi gaming kamu dengan makanan dan minuman favorit.</p>
                 </div>
             </div>
         </div>

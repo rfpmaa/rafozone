@@ -26,6 +26,7 @@
         overflow-x: hidden;
     }
 
+
     /* --- NAVIGATION --- */
     .navbar {
         background-color: rgba(15, 23, 42, 0.9) !important;
