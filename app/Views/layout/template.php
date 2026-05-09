@@ -28,19 +28,47 @@
 
 
     /* --- NAVIGATION --- */
-    .navbar {
-        background-color: rgba(15, 23, 42, 0.9) !important;
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-        z-index: 1050;
-    }
-    .navbar-brand {
-        font-weight: 800;
-        color: var(--primary) !important;
-        text-shadow: 0 0 10px rgba(0, 209, 255, 0.5);
-    }
-    .nav-link { color: #cbd5e1 !important; transition: 0.3s; }
-    .nav-link:hover { color: var(--primary) !important; }
+.navbar {
+    background-color: rgba(15, 23, 42, 0.9) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    z-index: 1050;
+}
+
+.navbar-brand {
+    font-weight: 800;
+    color: var(--primary) !important;
+    text-shadow: 0 0 10px rgba(0, 209, 255, 0.5);
+}
+
+.navbar .nav-link {
+    color: #cbd5e1 !important;
+    position: relative;
+    padding-bottom: 8px;
+    transition: 0.3s;
+}
+
+/* pas hover */
+.navbar .nav-link:hover {
+    color: var(--primary) !important;
+}
+
+/* menu aktif */
+.navbar .nav-link.active {
+    color: var(--primary) !important;
+}
+
+/* garis bawah */
+.navbar .nav-link.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 3px;
+    width: 100%;
+    height: 2px;
+    background: var(--primary);
+    border-radius: 10px;
+}
 
     /* --- LAYOUT WRAPPERS --- */
     .content-wrapper {

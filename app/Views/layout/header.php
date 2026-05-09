@@ -42,15 +42,15 @@
                 <?php else : ?>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Beranda</a>
+                        <a class="nav-link <?= (uri_string() == '') ? 'active' : ''; ?>" href="/">Beranda</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/layanan">Layanan</a>
+                        <a class="nav-link <?= (uri_string() == 'layanan') ? 'active' : ''; ?>" href="/layanan">Layanan</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/menu">Daftar Menu</a>
+                        <a class="nav-link <?= (uri_string() == 'menu_makanan') ? 'active' : ''; ?>" href="/menu_makanan">Daftar Menu</a>
                     </li>
 
                     <?php if (session()->get('logged_in')) : ?>
