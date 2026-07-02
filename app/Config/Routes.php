@@ -26,4 +26,5 @@ $routes->post('admin/tambah_makanan', 'Admin::tambah_makanan');
 $routes->get('admin/hapus_makanan/(:num)', 'Admin::hapus_makanan/$1');
 $routes->get('/logout', 'Auth::logout');
 $routes->get('/admin/pesanan', 'Admin::pesanan');
+$routes->get('/admin/pesanan', 'Admin::pesanan');
 
