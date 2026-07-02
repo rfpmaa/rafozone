@@ -30,9 +30,19 @@
                                 </span>
                             </div>
 
-                            <a href="/booking/pesan/<?= $l['id_layanan']; ?>" class="btn btn-booking btn-block">
-                                Booking Sekarang
-                            </a>
+                            <?php if (session()->get('logged_in')) : ?>
+
+    <a href="/booking/pesan/<?= $l['id_layanan']; ?>" class="btn btn-booking btn-block">
+        Booking Sekarang
+    </a>
+
+<?php else : ?>
+
+    <a href="/login" class="btn btn-booking btn-block">
+        Login untuk Booking
+    </a>
+
+<?php endif; ?>
                         </div>
                     </div>
                 </div>

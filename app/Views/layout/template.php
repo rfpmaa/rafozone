@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title; ?> | RafOzone</title>
@@ -186,6 +188,71 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     .badge-danger { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid #ef4444; }
     
     .menu-img { height: 180px; object-fit: cover; }
+
+    .footer{
+    background:#0f172a;      /* biru tua */
+    color:#fff;
+}
+
+.footer-title{
+    color:#18c8ff;           /* biru neon */
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+
+.footer p,
+.footer strong{
+    color:#cbd5e1;
+}
+
+.contact-box{
+    display:flex;
+    align-items:center;
+    gap:15px;
+
+    padding:15px;
+    margin-bottom:15px;
+
+    border-radius:12px;
+
+    background:#1e293b;
+    color:#fff;
+    text-decoration:none;
+
+    transition:.3s;
+}
+
+.contact-box:hover{
+    background:#18c8ff;
+    color:#fff;
+    transform:translateY(-3px);
+}
+
+.contact-box i{
+    font-size:22px;
+    width:25px;
+}
+
+.footer hr{
+    border-color:rgba(255,255,255,.15);
+}
+
+.footer .text-muted{
+    color:#94a3b8 !important;
+}
+
+.footer iframe{
+    border-radius:12px;
+}
+.footer-title{
+    color:#18c8ff;
+    text-shadow:0 0 10px rgba(24,200,255,.5);
+}
+.contact-box:hover{
+    background:linear-gradient(90deg,#18c8ff,#0ea5e9);
+    box-shadow:0 0 20px rgba(24,200,255,.4);
+}
 </style>
 </head>
 <body>
@@ -195,6 +262,8 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     <div class="content-wrapper">
         <?= $this->renderSection('content'); ?>
     </div>
+
+    <?= $this->include('layout/footer'); ?>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
