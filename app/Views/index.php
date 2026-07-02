@@ -6,7 +6,7 @@
 <div class="container pt-5">
 
     <h1 class="text-center display-4 font-weight-bold mb-4">
-        LEVEL UP YOUR <span class="text-gradient text-glow">GAMING EXPERIENCE</span>
+         <span class="text-gradient text-glow">GAMING EXPERIENCE</span>
     </h1>
     
     <p class="text-center text-muted mb-5 mx-auto" style="max-width: 700px; font-size: 1.1rem; line-height: 1.8;">

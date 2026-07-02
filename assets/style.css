@@ -1,0 +1,462 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap');
+
+:root {
+    --bg-dark: #080a0c; /* Warna background sangat gelap (bukan hitam pekat) */
+    --card-dark: #1a1d24; /* Warna kartu abu-abu kebiruan gelap */
+    --primary-neon: #00e5ff; /* Biru neon terang (cyan) */
+    --text-light: #9ba1a6; /* Teks deskripsi abu-abu terang */
+    --white: #ffffff;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.header h1 {
+    color: var(--white);
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-top: 20px;
+}
+
+.header h1 span {
+    color: var(--primary-neon);
+    text-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+}
+
+/* Layout Grid */
+.booking-layout {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
+}
+
+/* Card Styling */
+.glass-card {
+    background: var(--card-dark);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.glass-card h2 {
+    color: var(--white);
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Custom Radio Button for PS Units */
+.unit-option {
+    display: block;
+    position: relative;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.unit-option input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Container Utama Card */
+.unit-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Ubah dari center ke flex-start biar harga tetap rapi di atas */
+    padding: 20px;
+    background: rgba(255,255,255,0.03);
+    border: 2px solid transparent;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+/* Bagian Kiri (Judul & Deskripsi) */
+.unit-info {
+    flex: 1; /* Memaksa kotak info mengambil ruang sisa, tapi tidak melebihi batas */
+    padding-right: 25px; /* Memberi jarak/benteng pembatas agar tidak menabrak harga */
+}
+
+.unit-info h4 {
+    color: var(--white);
+    margin: 0 0 5px 0;
+    font-size: 1.1rem;
+}
+
+.unit-info small {
+    display: block; /* Membuat deskripsi rapi di baris baru */
+    line-height: 1.8; /* Memberi spasi antar baris agar mudah dibaca */
+    color: var(--text-light);
+}
+
+/* Bagian Kanan (Harga) */
+.unit-price {
+    color: var(--primary-neon);
+    font-weight: 600;
+    white-space: nowrap; /* KUNCI UTAMA: Mencegah teks harga patah / turun ke bawah */
+    text-align: right;
+}
+
+.unit-option:hover .unit-card {
+    background: rgba(255,255,255,0.06);
+}
+
+.unit-option input:checked ~ .unit-card {
+    border-color: var(--primary-neon);
+    background: rgba(0, 229, 255, 0.05);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
+}
+
+/* Form Inputs */
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px 20px;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    color: var(--white);
+    font-family: inherit;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-neon);
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+}
+
+/* Layout Tanggal & Waktu Bersebelahan */
+.date-time-row {
+    display: flex;
+    gap: 15px;
+}
+
+.date-time-row .input-group {
+    flex: 1; /* Biar lebarnya dibagi rata 50:50 */
+}
+
+/* Styling untuk Select Dropdown (Durasi) */
+select {
+    width: 100%;
+    padding: 15px 20px;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(227, 220, 220, 0.1);
+    border-radius: 12px;
+    color: var(--white);
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    
+}
+
+select option {
+    background: var(--card-dark);
+    color: var(--white);
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--primary-neon);
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+/* Styling Total Harga Dinamis */
+.total-display {
+    text-align: center;
+    margin: 30px 0;
+    padding: 15px;
+    background: rgba(0, 229, 255, 0.05);
+    border-radius: 12px;
+    border: 1px dashed var(--primary-neon);
+}
+
+.total-display p {
+    margin: 0 0 5px 0;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.total-display h3 {
+    margin: 0;
+    font-size: 2rem;
+    color: var(--primary-neon);
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+}
+
+/* Neon Button */
+.btn-neon {
+    width: 100%;
+    padding: 18px;
+    background: transparent;
+    border: 2px solid var(--primary-neon);
+    color: var(--primary-neon);
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.btn-neon:hover {
+    background: var(--primary-neon);
+    color: var(--bg-dark);
+    box-shadow: 0 0 25px var(--primary-neon);
+}
+
+/* Styling Info Tambahan Bawah Tombol */
+.extra-info {
+    margin-top: 30px;
+    text-align: center;
+    border-top: 1px dashed rgba(255,255,255,0.1);
+    padding-top: 20px;
+}
+
+.info-title {
+    color: var(--text-light);
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+}
+
+.payment-icons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.payment-icons .badge {
+    background: rgba(255,255,255,0.05);
+    color: var(--white);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border: 1px solid rgba(0, 229, 255, 0.3); /* List border warna neon */
+    letter-spacing: 1px;
+}
+
+.rules-box {
+    background: rgba(255, 170, 0, 0.05);
+    border-left: 4px solid #ffaa00; /* Garis peringatan warna oranye */
+    padding: 12px;
+    border-radius: 0 8px 8px 0;
+    text-align: left;
+}
+
+.rules-box small {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.8rem;
+    line-height: 1.5;
+    display: block;
+}
+
+/* =========================================
+   STYLE KHUSUS HALAMAN INDEX (BERANDA)
+========================================= */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%; 
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-logo {
+    height: 85px; /* Kecilkan tinggi logo (sebelumnya mungkin terlalu besar) */
+    width: auto; /* Memastikan logo tidak gepeng */
+    object-fit: contain;
+}
+
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 17px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.nav-links a:hover, 
+.nav-links a.active {
+    color: var(--primary-neon);
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+}
+
+.btn-nav {
+    border: 1px solid var(--primary-neon);
+    padding: 8px 20px;
+    border-radius: 20px;
+}
+
+.btn-nav:hover {
+    background: var(--primary-neon);
+    color: var(--background-dark) !important;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+}
+
+/* Hero Section Styling */
+.hero {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    /* Memberi efek cahaya lampu neon dari tengah */
+    background: radial-gradient(circle at center, rgba(0, 229, 255, 0.08) 0%, transparent 60%);
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.hero-content h1 span {
+    color: var(--primary-neon);
+    text-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+}
+
+.hero-content p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+}
+
+/* Features Section */
+.features {
+    display: grid;
+    /* Membagi 3 kotak fitur sejajar secara otomatis */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 40px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 2.5rem;
+    margin: 0 0 10px 0;
+}
+
+.features h3 {
+    color: var(--white);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.features p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+
+/* Styling Section Tambahan di Booking */
+.addon-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Membagi dua kolom */
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.addon-card {
+    position: relative;
+}
+
+.addon-check {
+    display: none; /* Sembunyikan checkbox asli */
+}
+
+.addon-label {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.addon-icon {
+    font-size: 1.5rem;
+    margin-right: 15px;
+}
+
+.addon-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.addon-name {
+    color: var(--white);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.addon-price {
+    color: var(--primary-neon);
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Style saat item dipilih/dicentang */
+.addon-check:checked + .addon-label {
+    background: rgba(0, 229, 255, 0.1);
+    border-color: var(--primary-neon);
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+}
