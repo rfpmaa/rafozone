@@ -51,12 +51,12 @@
         <h2 class="text-warning font-weight-bold mb-3">SPECIAL PROMO</h2>
         <h1 class="text-danger font-weight-bold mb-3">DISKON 10%</h1>
 
-        <h4 class="text-white mb-4">REGULER / VIP 1</h4>
+        <h5 class="text-white mb-4">KHUSUS REGULER / VIP 1</h5>
 
         <hr style="border-color: rgba(255,255,255,0.2);">
 
         <!-- Syarat -->
-        <div class="text-muted small mb-3">
+        <div class="text-white small mb-3">
             <p class="mb-1">Syarat & Ketentuan:</p>
             <ul class="pl-3 mb-0">
                 <li>Berlaku bulan Mei</li>
@@ -65,7 +65,7 @@
             </ul>
         </div>
 
-        <a href="/layanan" class="btn btn-warning btn-block">Booking Sekarang</a>
+        <a href="/promo" class="btn btn-warning btn-block">Booking Sekarang</a>
     </div>
 </div>
 
@@ -80,27 +80,27 @@
         <div class="col-md-4 mb-4">
             <div class="card h-100 p-4">
                 <div class="card-body text-center">
-                    <i class="fas fa-bolt text-primary mb-3 fa-2x"></i>
+                    <i class="fas fa-bolt text-warning mb-3 fa-2x"></i>
                     <h5 class="font-weight-bold text-white">Booking Instan</h5>
-                    <p class="text-muted small">Pesan room pilihanmu dalam hitungan detik tanpa antre.</p>
+                    <p class="text-white small">Pesan room pilihanmu dalam hitungan detik tanpa antre.</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4 mb-4">
             <div class="card h-100 p-4" style="border: 1px solid var(--primary);">
                 <div class="card-body text-center">
-                    <i class="fas fa-utensils  text-primary mb-3 fa-2x"></i>
+                    <i class="fas fa-utensils  text-warning mb-3 fa-2x"></i>
                     <h5 class="font-weight-bold text-white">Snacks & Drinks</h5>
-                    <p class="text-muted small">Nikmati sesi gaming kamu dengan makanan dan minuman favorit.</p>
+                    <p class="text-white small">Nikmati sesi gaming kamu dengan makanan dan minuman favorit.</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4 mb-4">
             <div class="card h-100 p-4">
                 <div class="card-body text-center">
-                    <i class="fas fa-qrcode text-primary mb-3 fa-2x"></i>
+                    <i class="fas fa-qrcode text-warning mb-3 fa-2x"></i>
                     <h5 class="font-weight-bold text-white">QRIS Payment</h5>
-                    <p class="text-muted small">Pembayaran otomatis dan aman menggunakan QRIS.</p>
+                    <p class="text-white small">Pembayaran otomatis dan aman menggunakan QRIS.</p>
                 </div>
             </div>
         </div>

@@ -27,4 +27,6 @@ $routes->get('admin/hapus_makanan/(:num)', 'Admin::hapus_makanan/$1');
 $routes->get('/logout', 'Auth::logout');
 $routes->get('/admin/pesanan', 'Admin::pesanan');
 $routes->get('/admin/pesanan', 'Admin::pesanan');
-
+$routes->get('promo', 'Home::promo');
+$routes->get('booking/promo/(:num)', 'Booking::promo/$1');
+$routes->post('booking/simpan_promo', 'Booking::simpan_promo');
